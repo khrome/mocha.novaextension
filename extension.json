@@ -1,0 +1,96 @@
+{
+    "identifier": "outsiderindustries.mocha",
+    "name": "mocha",
+    "organization": "outsider.industries",
+    "description": "Test your project with mocha",
+    "version": "1.0",
+    "categories": ["sidebars"],
+    
+    "main": "main.js",
+    
+    "activationEvents": [
+        "onLanguage:javascript"
+    ],
+    
+    "entitlements": {
+        "filesystem": "readwrite", "process": true
+    },
+    
+    "commands": {
+        "runMochaTest": [
+            {
+                "title": "Run Mocha Test",
+                "command": "runMochaTest",
+                "shortcut": "cmd-shift-t"
+            }
+        ]
+        
+    },
+    
+    "taskTemplates": {
+        "mochatest": {
+            "name": "Mocha Test",
+            "description": "Runs the mocha test suite",
+            "tasks": {
+                "clean": {
+                    "shell": true,
+                    "command": "node",
+                    "args": [ "-e", "console.log('cwd', process.cwd())"],
+                    "env": { }
+                },
+                "build": {
+                    "resolve": "outsiderindustries.assistants.mocha"
+                },
+                "run": {
+                    "resolve": "outsiderindustries.assistants.mocha"
+                }
+            } 
+        }
+    },
+    
+    "sidebars": [
+        {
+            "id": "mochasidebar",
+            "name": "Mocha Tests",
+            "smallImage": "mochasidebar-small",
+            "smallSelectedImage": "mochasidebar-small-selected",
+            "largeImage": "mochasidebar-large",
+            "largeSelectedImage": "mochasidebar-large-selected",
+            "sections": [
+                {
+                    "id": "mochasidebar",
+                    "name": "🚧 Mocha Tests",
+                    "allowMultiple": true,
+                    "placeholderText": "No profiles have been created.",
+                    "placeholderImage": "mochasidebar-placeholder",
+                    "headerCommands": [
+                        {
+                            "title": "Test",
+                            "image": "refresh",
+                            "tooltip": "Run the tests",
+                            "command": "mochasidebar.test"
+                        },
+                        {
+                            "title": "Test CL",
+                            "image": "terminal",
+                            "tooltip": "Run the tests",
+                            "command": "mochasidebar.test_cl"
+                        }
+                    ],
+                    "contextCommands": [
+                        {
+                            "title": "Remove",
+                            "command": "mochasidebar.remove",
+                            "when": "viewItem != null"
+                        },
+                        {
+                            "title": "Show in Finder",
+                            "command": "mochasidebar.showInFinder",
+                            "when": "viewItem != null"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

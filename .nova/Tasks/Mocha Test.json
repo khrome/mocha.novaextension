@@ -1,0 +1,11 @@
+{
+  "extension" : {
+    "identifier" : "outsiderindustries.mocha",
+    "name" : "mocha"
+  },
+  "extensionTemplate" : "mochatest",
+  "extensionValues" : {
+
+  },
+  "openLogOnRun" : "start"
+}
